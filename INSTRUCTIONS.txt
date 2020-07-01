@@ -1,0 +1,31 @@
+
+
+sudo apt install composer
+composer create-project --prefer-dist laravel/laravel p4_auth_l_001
+
+[cd to p4_auth_l_001]
+composer require laravel/ui
+php artisan ui bootstrap
+
+php artisan ui vue --auth
+npm install && npm run dev
+
+//REMEMBER to set .env for DB FIRST!!
+
+php artisan migrate
+	php artisan migrate --force
+
+https://github.com/DevMarketer/multiauth_tutorial 
+
+php artisan serve
+
+
+http://127.0.0.1:8000/login
+http://127.0.0.1:8000/register
+
+
+
+REF:
+https://github.com/DevMarketer/multiauth_tutorial
+and
+composer install
