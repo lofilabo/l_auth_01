@@ -11,11 +11,105 @@
 |
 */
 
+
+
+//USE THIS CHUNK for the multi-page Blade layout.
+//Remember to switch the correct resources/views directory
+/*
+Route::get('/', function()
+{
+    return View::make('pages.home');
+});
+Route::get('about', function()
+{
+    return View::make('pages.about');
+});
+Route::get('projects', function()
+{
+    return View::make('pages.projects');
+});
+Route::get('contact', function()
+{
+    return View::make('pages.contact');
+});
+*/
+//USE THIS CHUNK for the multi-page Blade layout ENDS
+//Remember to switch the correct resources/views directory
+
+
+//USE THIS CHUNK for the auth layout.
 Route::get('/', function () {
     return view('welcome');
 });
+//USE THIS CHUNK for the auth layout.
+
 
 Auth::routes();
+
+Route::get('/test', 'TestController@index');
+
+Route::prefix('/resp_contact')->group(function() {
+  Route::get('/', 'Resp_contactController@read');
+  Route::get('/create', 'Resp_contactController@create');
+  Route::get('/read', 'Resp_contactController@read');
+  Route::get('/update', 'Resp_contactController@update');
+  Route::get('/delete', 'Resp_contactController@delete');
+});
+
+
+Route::prefix('/resp_alliance')->group(function() {
+  Route::get('/', 'Resp_allianceController@read');
+  Route::get('/create', 'Resp_allianceController@create');
+  Route::get('/read', 'Resp_allianceController@read');
+  Route::get('/update', 'Resp_allianceController@update');
+  Route::get('/delete', 'Resp_allianceController@delete');
+});
+
+
+Route::prefix('/resp_recruitment')->group(function() {
+  Route::get('/', 'Resp_recruitmentController@read');
+  Route::get('/create', 'Resp_recruitmentController@create');
+  Route::get('/read', 'Resp_recruitmentController@read');
+  Route::get('/update', 'Resp_recruitmentController@update');
+  Route::get('/delete', 'Resp_recruitmentController@delete');
+});
+
+
+Route::prefix('/resp_sesrecruitment')->group(function() {
+  Route::get('/', 'Resp_ses_recruitmentController@read');
+  Route::get('/create', 'Resp_ses_recruitmentController@create');
+  Route::get('/read', 'Resp_ses_recruitmentController@read');
+  Route::get('/update', 'Resp_ses_recruitmentController@update');
+  Route::get('/delete', 'Resp_ses_recruitmentController@delete');
+});
+
+
+Route::prefix('/resp_jobseeker')->group(function() {
+  Route::get('/', 'Resp_jobseekerController@read');
+  Route::get('/create', 'Resp_jobseekerController@create');
+  Route::get('/read', 'Resp_jobseekerController@read');
+  Route::get('/update', 'Resp_jobseekerController@update');
+  Route::get('/delete', 'Resp_jobseekerController@delete');
+});
+
+
+Route::prefix('/resp_sesjobseeker')->group(function() {
+  Route::get('/', 'Resp_ses_jobseekerController@read');
+  Route::get('/create', 'Resp_ses_jobseekerController@create');
+  Route::get('/read', 'Resp_ses_jobseekerController@read');
+  Route::get('/update', 'Resp_ses_jobseekerController@update');
+  Route::get('/delete', 'Resp_ses_jobseekerController@delete');
+});
+
+
+Route::prefix('/resp_catchall')->group(function() {
+  Route::get('/', 'Resp_catchallController@read');
+  Route::get('/create', 'Resp_catchallController@create');
+  Route::get('/read', 'Resp_catchallController@read');
+  Route::get('/update', 'Resp_catchallController@update');
+  Route::get('/delete', 'Resp_catchallController@delete');
+});
+
 
 Route::get('/home', 'HomeController@index');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');

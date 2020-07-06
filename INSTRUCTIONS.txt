@@ -1,5 +1,4 @@
 
-
 sudo apt install composer
 composer create-project --prefer-dist laravel/laravel p4_auth_l_001
 
@@ -11,6 +10,8 @@ php artisan ui vue --auth
 npm install && npm run dev
 
 //REMEMBER to set .env for DB FIRST!!
+
+php artisan key:generate
 
 php artisan migrate
 	php artisan migrate --force
@@ -29,3 +30,18 @@ REF:
 https://github.com/DevMarketer/multiauth_tutorial
 and
 composer install
+
+
+ADDING AN ADMIN USER:
+$admin=new App\Admin
+=> App\Admin {#663}
+$admin->name="admin"
+=> "admin"
+$admin->email="admin@admin.com"
+=> "admin@admin.com"
+$admin->password = Hash::make('password')
+=> "$2y$10$Q4XLVRuK3gib6SmnyHnlyesYjglY12C8enjpwmllRIu01PMIW79iS"
+$admin->job_title = 'admin'
+=> "admin"
+$admin->save()
+=> true
