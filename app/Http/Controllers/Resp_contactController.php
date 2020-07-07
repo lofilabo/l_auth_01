@@ -9,7 +9,7 @@ use App\Resp_contact;
 class Resp_contactController extends Controller
 {
     public function __construct(){
-        //$this->middleware('auth');
+        $this->middleware('auth');
         //$this->middleware('auth:admin');
     }
 
