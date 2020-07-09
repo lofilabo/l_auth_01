@@ -22,10 +22,10 @@ use Facebook\Exceptions\FacebookSDKException;
 class ConsoleFBController extends Controller
 {
 
-	protected $access_token = '198466731577053|SgYr7pom7LGdP7u6gX39VO_fU0A';
-	protected $app_secret = '278680303437374489785d5be0a3f602';
-	protected $app_id = '198466731577053';
-	protected $id = '317724085917897';
+	protected $access_token = '';
+	protected $app_secret = '';
+	protected $app_id = '';
+	protected $id = '';
 
     public function __construct(){
         //$this->middleware('auth');
