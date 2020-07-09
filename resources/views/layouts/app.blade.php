@@ -27,11 +27,9 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="/style4.css">
 
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/590b1878e3.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
 
 <style>
 .fixed-height-001{
@@ -117,7 +115,7 @@
             <ul class="list-unstyled components">
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-home"></i>
+                        <i class="fa fa-home"></i>
                         Web Site Contact
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -129,17 +127,28 @@
                          <li><a href="/resp_sesjobseeker">SES Candidates</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="fas fa-image"></i>Item</a></li>
-                <li><a href="#"><i class="fas fa-question"></i>Item</a></li>
-                <li><a href="#"><i class="fas fa-paper-plane"></i> Item</a> </li>
+                <li class="active">
+                    <a href="#facebookConsole" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        Facebook Console
+                    </a>
+                    <ul class="collapse list-unstyled" id="facebookConsole">
+                        <li><a href="/console/fb">Log On</a></li>
+                         <li><a href="/console/fb/logout">Log Out</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-camera-retro"></i></i>Item</a></li>
+                <li><a href="#"><i class="fa fa-question"></i>Item</a></li>
+                <li><a href="#"><i class="fa fa-paper-plane"></i> Item</a> </li>
 
 
 
 		 @if (Auth::guest())
-                  <li ><a class="article" href="{{ route('login') }}"><i class="fas fa-user"></i>Login</a></li>
-                  <li><a class="article" href="{{ route('register') }}"><i class="fas fa-user"></i>Register</a></li>
+                  <li ><a class="article" href="{{ route('login') }}"><i class="fa fa-sign-in"></i>Login</a></li>
+                  <li><a class="article" href="{{ route('register') }}"><i class="fa fa-registered"></i>Register</a></li>
 		@else
-                  <li>  <a class="article"  href="{{ route('logout') }}"   onclick="event.preventDefault();  document.getElementById('logout-form').submit();"><i class="fas fa-user"></i>Logout</a></li>
+                  <li>  <a class="article"  href="{{ route('logout') }}"   onclick="event.preventDefault();  document.getElementById('logout-form').submit();"><i class="fa fa-user"></i>Logout</a></li>
 		@endif
 
             </ul>
@@ -165,7 +174,7 @@
                         <!--<span>Toggle Sidebar</span>-->
                     </button>
                     <button class="topmenu-hider btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
+                        <i class="fa fa-align-justify"></i>
                     </button>
 			
                     <div class="topmenu-hider collapse navbar-collapse" id="navbarSupportedContent">

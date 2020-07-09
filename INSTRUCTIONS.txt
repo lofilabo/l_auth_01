@@ -45,3 +45,41 @@ $admin->job_title = 'admin'
 => "admin"
 $admin->save()
 => true
+
+
+
+FACEBOOK SDK.
+
+This has a dependency on the facbook sdk.
+//Next in the same directory, create a file named "composer.json", 
+//then copy this to the file:
+{
+  "require": {
+    "facebook/graph-sdk" : "~5.0",
+    "facebook/php-ads-sdk": "2.8.*"
+  }
+}
+
+//Then install it through composer:
+php composer.phar install --no-dev
+
+SAKURA HAS NO COMPOSER INSTALL.
+AND /VENDORS IS EXCLUDED BY GITIGNORE
+WE HAVE TO PUSH THE /VENDORS DIRECTORY BY FTP.
+
+Include these lines into composer.json, in the REQUIRE block which already exists:
+    "facebook/graph-sdk" : "~5.0",
+    "facebook/php-ads-sdk": "2.8.*"
+
+then,
+composer update
+composer install
+
+
+
+
+
+
+
+
+

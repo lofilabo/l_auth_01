@@ -110,6 +110,11 @@ Route::prefix('/resp_catchall')->group(function() {
   Route::get('/delete', 'Resp_catchallController@delete');
 });
 
+Route::get('/console/fb', 'ConsoleFBController@index');
+Route::get('/console/marketing-api', 'ConsoleFBController@marketingapi');
+Route::get('/console/fb/logout', 'ConsoleFBController@log_out_of_fb');
+
+
 
 Route::get('/home', 'HomeController@index');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
