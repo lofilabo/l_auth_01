@@ -133,8 +133,9 @@
                         Facebook Console
                     </a>
                     <ul class="collapse list-unstyled" id="facebookConsole">
-                        <li><a href="/console/fb">Log On</a></li>
-                         <li><a href="/console/fb/logout">Log Out</a></li>
+                        <li><a href="/console/fb/leads/read">View Leads</a></li>
+                        <li><a href="/console/fb">Log In</a></li>
+                        <li><a href="/console/fb/logout">Log Out</a></li>
 
                     </ul>
                 </li>

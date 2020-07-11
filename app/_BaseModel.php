@@ -3,9 +3,9 @@ namespace App;
 #use Jenssegers\Mongodb\Relations\BelongsTo;
 #use Jenssegers\Mongodb\Model;
 #use Illuminate\Support\Facades\Hash;
-#use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Validator;
 #use Illuminate\Support\MessageBag;
-#use Illuminate\Support\Str;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class _BaseModel extends Model {

@@ -1,0 +1,35 @@
+@extends('layouts.app')
+		@section('content')
+
+		<table id="example" class="table table-striped table-bordered" >
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>form</th>
+                <th>lead</th>
+                <th>made at</th>
+                <th>page</th>
+                <th>ad group</th>
+                <th>logged at</th>
+                
+            </tr>
+        </thead>
+		<tbody>
+
+
+				@foreach ($arr as $arrmember)
+		            <tr>
+             <td>{{$arrmember['ad_id']}} </td>
+             <td>{{$arrmember['form_id']}} </td>
+             <td>{{$arrmember['leadgen_id']}} </td>
+             <td>{{date('r', $arrmember['created_time'])}} </td>
+             <td>{{$arrmember['page_id']}} </td>
+             <td>{{$arrmember['adgroup_id']}} </td>
+             <td>{{$arrmember['created_at']}} </td>
+					   
+				   </tr>
+				@endforeach
+		</tbody>
+		</table>
+
+@endsection

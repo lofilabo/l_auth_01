@@ -2,37 +2,86 @@
 /*
 ACCESS TOKEN FOR ADACCOUNT
 EAAC0gSMJDt0BABSmyX0RmI0TSyk5cZC6wnjaCCI9hLpoEZCgdpfATulxId6Esbvve59NC3wAJZBmll8DbfgNnZBop66aEgcgSvb8rnojmgQx8gOZCDHRGQN1qwEJpUMncSZBZAF02UqHGDNl80LHOxK9CWsZA0CZBNEioyc8DZBKboqmrnJ8qpVjuT
+
+
+New Sandbox Ad Account (3028605297234815)
+
+
+Sandbox Account Access Token
+
+EAAMRT6a6vqEBAPJkLjlSmIBO83FCTvnO0p66u54RnxyXKKiVDubInTToJvmKnxbJyZACb7YYtIhUfKLOUXrXGsNcyinkHvpPJkQ389ZAdm7ZCQVnbrPKsUZCkuW4X5PTYj0FeHj7ZAicff3ZCDMY0ddlZAoZApnLr3FaJ4l6aYOYsHp5jxZCzTydCr0qmJFwZBUjIZD
+
 */
 namespace App\Http\Controllers;
+
+/*
+use FacebookAds\Object\AdAccount;
+use FacebookAds\Object\AdsInsights;
+use FacebookAds\Api;
+use FacebookAds\Logger\CurlLogger;
+*/
 
 use Illuminate\Http\Request;
 use Facebook\Facebook;
 use FacebookAds\Object\AdAccount;
-
-use FacebookAds\Object\AdUser;
+use FacebookAds\Object\AdsInsights;
+use FacebookAds\Object\User as AdUser;
 use FacebookAds\Object\Fields\AdUserFields;
 use FacebookAds\Object\Fields\AdAccountFields;
-
 use FacebookAds\Object\Campaign;
 use FacebookAds\Api;
 use FacebookAds\Logger\CurlLogger;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
+use FacebookAds\Object\Ad;
+use FacebookAds\Object\Lead;
+use FacebookAds\Object\AdCampaign;
+use FacebookAds\Object\Fields\AdCampaignFields;
+use FacebookAds\Object\Fields\AdSetFields;
+
+use Config;
 
 class ConsoleFBController extends Controller
 {
+/*iHolon - test01
+	protected $access_token = '198466731577053|SgYr7pom7LGdP7u6gX39VO_fU0A';
+	protected $app_secret = '278680303437374489785d5be0a3f602';
+	protected $app_id = '198466731577053';
+	protected $id = '317724085917897';
+*/
+	//iHolon01
+	protected $access_token = 'EAAMRT6a6vqEBAI6J4IBEHUcZAIygCEND48VFmuqKaBWtqDfNxQgFzGUU08kgPUhE8c5T4RO6JH6fJZCUeF7QUzzYlqs2rDLO2rnZADOrTA7WHN0OkVgrEdco7r2iX3Cp9dkEoKKecJMfSqWB3IY6EZC3phLku4m2ZCqhsZA1ax8gvgvzNZBvsNU';
+	protected $app_secret = 'a2838279b74a8ef66a7650ad4ba613e9';
+	protected $app_id = '863458727476897';
+	protected $id = '317724085917897';
 
-	protected $access_token = '';
-	protected $app_secret = '';
-	protected $app_id = '';
-	protected $id = '';
-
+/*
+	protected $access_token = 'EAAMRT6a6vqEBAPJkLjlSmIBO83FCTvnO0p66u54RnxyXKKiVDubInTToJvmKnxbJyZACb7YYtIhUfKLOUXrXGsNcyinkHvpPJkQ389ZAdm7ZCQVnbrPKsUZCkuW4X5PTYj0FeHj7ZAicff3ZCDMY0ddlZAoZApnLr3FaJ4l6aYOYsHp5jxZCzTydCr0qmJFwZBUjIZD';
+	protected $ad_account_id = 'act_3028605297234815';
+	protected $app_secret = 'a2838279b74a8ef66a7650ad4ba613e9';
+	protected $app_id = '863458727476897';
+*/
+/*
+	protected $access_token = null;
+	protected $app_secret = null;
+	protected $app_id = null;
+	protected $id = null;
+*/
     public function __construct(){
-        //$this->middleware('auth');
+
+        $this->middleware('auth');
         //$this->middleware('auth:admin');
+
 		if (!session_id()) {
 		    session_start();
 		}
+//		dd(config('ACCESS_TOKEN',false));
+/*
+		$this->access_token = config('access_token');
+		$this->app_secret = config('app_secret');
+		$this->app_id = config('app_id');
+		$this->id = config('id');
+*/
 		$this->fb = new Facebook([
 		  'app_id' => $this->app_id,
 		  'app_secret' => $this->app_secret,
@@ -84,6 +133,8 @@ class ConsoleFBController extends Controller
 		if ($_SESSION['facebook_access_token']) {
 		  //echo "You are logged in!";
 		  return($this->good_stuff());
+		  //$this->samplecode_from_fb();
+
 		} else {
 		  $permissions = ['ads_management'];
 		  $baseurl = $this->getBaseUrl();
@@ -211,46 +262,70 @@ class ConsoleFBController extends Controller
 
     }
 
+
+    public function samplecode_from_fb(){
+
+			$api = Api::init($this->app_id, $this->app_secret, $this->access_token);
+			$fields = array(
+			);
+			$params = array(
+			);
+
+			$account = new AdAccount($this->ad_account_id);
+
+			$adsets = $account->getAdSets(array(
+			  AdSetFields::NAME,
+			  AdSetFields::CONFIGURED_STATUS,
+			  AdSetFields::EFFECTIVE_STATUS,
+			));
+			echo json_encode($adsets, JSON_PRETTY_PRINT);
+			
+			echo json_encode($account->getInsights( $fields, $params )->getResponse()->getContent(), JSON_PRETTY_PRINT);
+    }
+
+
     public function good_stuff(){
 		if (!session_id()) {
 		    session_start();
 		}
+		/*
 		Api::init(
 		  $this->app_id,
 		  $this->app_secret,
 		  $_SESSION['facebook_access_token'] // Your user access token
-		);   
+		);
+		*/  
 
-/*
-		$fb = new Facebook([
-		  'app_id' => $this->app_id,
-		  'app_secret' => $this->app_secret,
-		  'default_graph_version' => 'v2.10',
-		]);
-*/
-		$fb = $this->fb;
+		$api = Api::init( $this->app_id, $this->app_secret, $this->access_token ); 
 		
-		$data = array(1,2,3,4);
-
-		$fb->setDefaultAccessToken( $_SESSION['facebook_access_token']);
-
-		//THINGS THAT WORK....
-		$res = $fb->get('/me?fields=birthday');
-		$res = $fb->get('/me?fields=email');
-		$res = $fb->get('/me?fields=hometown');
-		$res = $fb->get('/105832091202741/photos?fields=height,width');
-		//$res = $fb->get('/me?fields=birthday');
-
+		$fields = array();
+		$params = array();
 
 		//$me = new AdUser('me');
-		//$aaa = $me->getAdAccounts()->current();
+		//$accounts = $me->getAdAccounts();
 
+		$fb = $this->fb;
+		$fb->setDefaultAccessToken( $_SESSION['facebook_access_token']);
+		
+		//THINGS THAT WORK....
+
+  		$res = $fb->get('/me');
+
+		//$res = $fb->get('/me?fields=birthday');
+		//$res = $fb->get('/me?fields=email');
+		//$res = $fb->get('/me?fields=hometown');
+		//$res = $fb->get('/105832091202741/photos?fields=height,width');
+		//$res = $fb->get('/me/adaccounts');
 		//END OF THINGS THAT WORK
 		//$node = $res->getGraphObject();
+		
+		//$me = new AdUser('me');
+		
+		//$aaa = $me->getAdAccounts()->current();
 		$arrCities = print_r($res, true);
 		//dd($node); 	
-		$bh = $_SESSION['facebook_details_1'];
-		dd( $res );
+		//$bh = $_SESSION['facebook_details_1'];
+		//dd( $res );
 		
 		//dd($_SESSION['facebook_details_2']);
 		return view('Console.fb', ["lit" => '', "nuf" => $arrCities ]);

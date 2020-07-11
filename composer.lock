@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6745bc13eaf35847fb9a7e56a757f5ee",
+    "content-hash": "c32e73a30cc53ca55874431b02bbe18c",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -223,20 +223,20 @@
         },
         {
             "name": "facebook/php-ads-sdk",
-            "version": "2.8.2",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/facebook/facebook-php-ads-sdk.git",
-                "reference": "d51193b19d730ae9274d45540986e1ac311b074d"
+                "url": "https://github.com/facebook/facebook-php-business-sdk.git",
+                "reference": "4826bb4c797c15b05bd0d99480c8a0d80792d08a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/facebook-php-ads-sdk/zipball/d51193b19d730ae9274d45540986e1ac311b074d",
-                "reference": "d51193b19d730ae9274d45540986e1ac311b074d",
+                "url": "https://api.github.com/repos/facebook/facebook-php-business-sdk/zipball/4826bb4c797c15b05bd0d99480c8a0d80792d08a",
+                "reference": "4826bb4c797c15b05bd0d99480c8a0d80792d08a",
                 "shasum": ""
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.6",
+                "phpunit/phpunit": "~8",
                 "symfony/finder": "~2.6"
             },
             "type": "library",
@@ -246,30 +246,30 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Facebook Platform"
-            ],
-            "description": "PHP SDK for Facebook ads",
+            "description": "PHP SDK for Facebook Business",
             "homepage": "https://developers.facebook.com/",
             "keywords": [
                 "ads",
+                "business",
                 "facebook",
+                "instagram",
+                "page",
                 "sdk"
             ],
-            "time": "2017-04-13T20:43:54+00:00"
+            "time": "2020-05-05T19:20:46+00:00"
         },
         {
             "name": "facebook/php-business-sdk",
-            "version": "3.3.6",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/facebook-php-business-sdk.git",
-                "reference": "dca55a5dc1f99aa828a230860b2e5bd5610354b6"
+                "reference": "3e4c8e120914738b1a271a9139abd4c332b102ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/facebook-php-business-sdk/zipball/dca55a5dc1f99aa828a230860b2e5bd5610354b6",
-                "reference": "dca55a5dc1f99aa828a230860b2e5bd5610354b6",
+                "url": "https://api.github.com/repos/facebook/facebook-php-business-sdk/zipball/3e4c8e120914738b1a271a9139abd4c332b102ca",
+                "reference": "3e4c8e120914738b1a271a9139abd4c332b102ca",
                 "shasum": ""
             },
             "require-dev": {
@@ -293,7 +293,7 @@
                 "page",
                 "sdk"
             ],
-            "time": "2019-07-26T19:05:24+00:00"
+            "time": "2019-07-29T20:34:03+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3945,20 +3945,20 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "9dc4f203e36f2b486149058bade43c851dd97451"
+                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/9dc4f203e36f2b486149058bade43c851dd97451",
-                "reference": "9dc4f203e36f2b486149058bade43c851dd97451",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0",
+                "php": "^5.3.3 || ^7.0 || ^8.0",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
@@ -3990,7 +3990,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-06-16T10:16:42+00:00"
+            "time": "2020-07-08T17:02:28+00:00"
         }
     ],
     "aliases": [],

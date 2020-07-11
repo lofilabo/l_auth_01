@@ -44,9 +44,20 @@ Route::get('/', function () {
 //USE THIS CHUNK for the auth layout.
 
 
+
 Auth::routes();
 
 Route::get('/test', 'TestController@index');
+
+
+Route::prefix('console/fb')->group(function() {
+  Route::get('/leads/read', 'FBConsoleController@read_leads');
+  //Route::get('/dbtest', 'FBWebhookController@testdb');
+});
+
+Route::get('/console/fb', 'ConsoleFBController@index');
+Route::get('/console/marketing-api', 'ConsoleFBController@marketingapi');
+Route::get('/console/fb/logout', 'ConsoleFBController@log_out_of_fb');
 
 Route::prefix('/resp_contact')->group(function() {
   Route::get('/', 'Resp_contactController@read');
@@ -55,6 +66,7 @@ Route::prefix('/resp_contact')->group(function() {
   Route::get('/update', 'Resp_contactController@update');
   Route::get('/delete', 'Resp_contactController@delete');
 });
+
 
 
 Route::prefix('/resp_alliance')->group(function() {
@@ -110,9 +122,7 @@ Route::prefix('/resp_catchall')->group(function() {
   Route::get('/delete', 'Resp_catchallController@delete');
 });
 
-Route::get('/console/fb', 'ConsoleFBController@index');
-Route::get('/console/marketing-api', 'ConsoleFBController@marketingapi');
-Route::get('/console/fb/logout', 'ConsoleFBController@log_out_of_fb');
+
 
 
 

@@ -13,6 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
+
+Route::post('/fbwebhook', 'FBWebhookController@postindex');
+Route::get('/fbwebhook', 'FBWebhookController@getindex');
+Route::post('/fbwebhook/', 'FBWebhookController@postindex');
+Route::get('/fbwebhook/', 'FBWebhookController@getindex');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
