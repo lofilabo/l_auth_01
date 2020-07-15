@@ -95,7 +95,7 @@
 	    <div class="row">
 	        <div class="col-md-12">
 	            <div class="panel panel-default topbar">
-				<h1/>MAIN HEADER</h1>
+				<h1/>iHolon Console</h1>
 	            </div>
 	        </div>
 	    </div>
