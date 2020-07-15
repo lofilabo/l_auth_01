@@ -25,7 +25,11 @@ ngrok http 443
 
 Ngrok will not assign to port 443; but it will report what port it is using, like this:
 Forwarding                    http://e7bd9dde3392.ngrok.io -> http://localhost:52596                    
-Forwarding                    https://e7bd9dde3392.ngrok.io -> http://localhost:52596      
+Forwarding                    https://e7bd9dde3392.ngrok.io -> http://localhost:52596  
+
+These two work:
+sudo php artisan serve --port 52596
+ngrok http 52596
 
 We want the one associated with https://, obviously.
 
@@ -113,7 +117,7 @@ class FBWebhookController extends Controller
     public function handleLead($leadstr){
 
         $leadobj = json_decode($leadstr, true);
-        //error_log(print_r($leadobj, true));
+        error_log(print_r($leadobj, true));
 
 
             /*
@@ -154,10 +158,10 @@ class FBWebhookController extends Controller
 
         $entryobj = $leadobj['entry'];
         foreach($entryobj as $entry){
-            //error_log(print_r($entry, true));
+            error_log(print_r($entry, true));
             $changesobj = $entry['changes'];
             foreach($changesobj as $change){
-                //error_log(print_r($change, true));
+                error_log(print_r($change, true));
                 /*
                 error_log(print_r( $change['value']['ad_id'], true ));
                 error_log(print_r( $change['value']['form_id'], true ));
