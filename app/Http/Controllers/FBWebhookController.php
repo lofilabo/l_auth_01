@@ -118,6 +118,8 @@ class FBWebhookController extends Controller
         }else{
             error_log($input);              
         }
+
+        return "You hit the spot";
       
     }
 
