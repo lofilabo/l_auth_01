@@ -103,7 +103,15 @@ class FBWebhookController extends Controller
 
     public function postindex(Request $request){
 
+    $fileHandle = fopen('dbgdmp.txt', 'a+');
+    $result = fwrite ($fileHandle , "\n");
+    
+
+
         $input = $request->getContent();
+
+        $result = fwrite ($fileHandle , $input . "\n\n");
+
 
         if(strpos($input, 'leadgen')!=FALSE){
             $this->handleLead($input);
