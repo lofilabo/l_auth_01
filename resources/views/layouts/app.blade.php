@@ -20,6 +20,18 @@
         ]) !!};
     </script>
 
+
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -87,6 +99,11 @@
 }
 
 
+.fa-envelope {color: purple !important;}
+.fa-snowflake-o {color: pink !important;}
+.fa-star {color: red !important;}
+.fa-facebook-square {color: darkblue !important;}
+.fa-building {color: yellow !important;}
 </style>
 
 </head>
@@ -95,7 +112,7 @@
 	    <div class="row">
 	        <div class="col-md-12">
 	            <div class="panel panel-default topbar">
-				<h1/>iHolon Console</h1>
+				<h1><img src='/CHORDATA.png'>株式会社iHOLON</h2>
 	            </div>
 	        </div>
 	    </div>
@@ -113,9 +130,12 @@
             </div>
             
             <ul class="list-unstyled components">
+            @if (Auth::guest())
+
+            @else
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa fa-home"></i>
+                        <i class="fa fa-envelope"></i>
                         Web Site Contact
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -127,6 +147,58 @@
                          <li><a href="/resp_sesjobseeker">SES Candidates</a></li>
                     </ul>
                 </li>
+
+
+
+
+                <li class="active">
+                    <a href="#candidatesData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa fa-snowflake-o"></i>
+                        Candidates
+                    </a>
+                    <ul class="collapse list-unstyled" id="candidatesData">
+                        <li><a href="/candidates/">View All</a></li>
+                        <li><a href="/candidates/new">New</a></li>
+                        <li><a href="/candidates/candidate/1">One</a></li>
+                        <li><a href="/candidates/create">Create</a></li>
+                        <li><a href="/candidates/update">Update</a></li>
+                    </ul>
+                </li>
+
+
+
+                <li class="active">
+                    <a href="#jobsData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa fa-star"></i>
+                        Jobs
+                    </a>
+                    <ul class="collapse list-unstyled" id="jobsData">
+                        <li><a href="/jobs/">View All</a></li>
+                        <li><a href="/jobs/new">New</a></li>
+                        <li><a href="/jobs/candidate/1">One</a></li>
+                        <li><a href="/jobs/create">Create</a></li>
+                        <li><a href="/jobs/update">Update</a></li>
+                    </ul>
+                </li>
+
+
+
+                <li class="active">
+                    <a href="#employersData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa fa-building"></i>
+                        Employers
+                    </a>
+                    <ul class="collapse list-unstyled" id="employersData">
+                        <li><a href="/employers/">View All</a></li>
+                        <li><a href="/employers/new">New</a></li>
+                        <li><a href="/employers/candidate/1">One</a></li>
+                        <li><a href="/employers/create">Create</a></li>
+                        <li><a href="/employers/update">Update</a></li>
+                    </ul>
+                </li>
+
+
+
                 <li class="active">
                     <a href="#facebookConsole" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fa fa-facebook-square" aria-hidden="true"></i>
@@ -142,7 +214,7 @@
                 <li><a href="#"><i class="fa fa-camera-retro"></i></i>Item</a></li>
                 <li><a href="#"><i class="fa fa-question"></i>Item</a></li>
                 <li><a href="#"><i class="fa fa-paper-plane"></i> Item</a> </li>
-
+        @endif
 
 
 		 @if (Auth::guest())
@@ -218,29 +290,16 @@
         </div>
     </div>
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
+
+
         });
     </script>
 
-
-
-
-
-
-
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"/>
 </body>
 </html>

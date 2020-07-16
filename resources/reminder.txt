@@ -1,2 +1,0 @@
-Are you switching views?
-Did you remember to change the routes in /routes/web.php ??

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 		@section('content')
 
-		<table id="example" class="table table-striped table-bordered" >
-        <thead>
+		<table class="table table-striped table-bordered" id="myTable" cellspacing="0" width="100%">
+        <thead class="thead-dark">
             <tr>
                 <th>id</th>
                 <th>form</th>

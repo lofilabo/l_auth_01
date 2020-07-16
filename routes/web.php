@@ -38,9 +38,12 @@ Route::get('contact', function()
 
 
 //USE THIS CHUNK for the auth layout.
+Route::get('/', 'HomeController@index');
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 //USE THIS CHUNK for the auth layout.
 
 
@@ -49,6 +52,29 @@ Auth::routes();
 
 Route::get('/test', 'TestController@index');
 
+Route::prefix('/candidates')->group(function() {
+  Route::get('/', 'CandidatesController@read_many');
+  Route::get('/candidate/{id}', 'CandidatesController@read_one');
+  Route::get('/new', 'CandidatesController@new_one');
+  Route::get('/create', 'CandidatesController@create_one');
+  Route::get('/update', 'CandidatesController@update_one');
+});
+
+Route::prefix('/jobs')->group(function() {
+  Route::get('/', 'JobsController@read_many');
+  Route::get('/job/{id}', 'JobsController@read_one');
+  Route::get('/new', 'JobsController@new_one');
+  Route::get('/create', 'JobsController@create_one');
+  Route::get('/update', 'JobsController@update_one');
+});
+
+Route::prefix('/employers')->group(function() {
+  Route::get('/', 'EmployersController@read_many');
+  Route::get('/employer/{id}', 'EmployersController@read_one');
+  Route::get('/new', 'EmployersController@new_one');
+  Route::get('/create', 'EmployersController@create_one');
+  Route::get('/update', 'EmployersController@update_one');
+});
 
 Route::prefix('console/fb')->group(function() {
   Route::get('/leads/read', 'FBConsoleController@read_leads');
