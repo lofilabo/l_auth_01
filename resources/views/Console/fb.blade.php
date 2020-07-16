@@ -1,8 +1,8 @@
 @extends('layouts.app')
 		@section('content')
 
-{{ @json($nuf) }}
+{{ $nuf }}
 <hr/>
-{!! @json($lit) !!}
+{!! $lit !!}
 
 @endsection
