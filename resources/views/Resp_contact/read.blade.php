@@ -1,8 +1,20 @@
 @extends('layouts.app')
 		@section('content')
 
-		<table id="example" class="table table-striped table-bordered" >
-        <thead>
+
+
+  <!-- heading -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <h3 class="text-primary mr-auto">Contact</h3>
+      </div>
+    </div>
+  </div>
+  <!-- /heading -->
+  <!-- table -->
+  <table class="table table-striped table-bordered" id="myTable" cellspacing="0" width="100%">
+    <thead class="thead-dark">
             <tr>
                 <th>message</th>
                 <th>name</th>

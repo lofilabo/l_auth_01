@@ -159,9 +159,11 @@
                     <ul class="collapse list-unstyled" id="candidatesData">
                         <li><a href="/candidates/">View All</a></li>
                         <li><a href="/candidates/new">New</a></li>
+                        {{--
                         <li><a href="/candidates/candidate/1">One</a></li>
                         <li><a href="/candidates/create">Create</a></li>
                         <li><a href="/candidates/update">Update</a></li>
+                        --}}
                     </ul>
                 </li>
 
@@ -175,9 +177,11 @@
                     <ul class="collapse list-unstyled" id="jobsData">
                         <li><a href="/jobs/">View All</a></li>
                         <li><a href="/jobs/new">New</a></li>
+                        {{--
                         <li><a href="/jobs/candidate/1">One</a></li>
                         <li><a href="/jobs/create">Create</a></li>
                         <li><a href="/jobs/update">Update</a></li>
+                        --}}
                     </ul>
                 </li>
 
@@ -191,9 +195,11 @@
                     <ul class="collapse list-unstyled" id="employersData">
                         <li><a href="/employers/">View All</a></li>
                         <li><a href="/employers/new">New</a></li>
+                        {{--
                         <li><a href="/employers/candidate/1">One</a></li>
                         <li><a href="/employers/create">Create</a></li>
                         <li><a href="/employers/update">Update</a></li>
+                        --}}
                     </ul>
                 </li>
 

@@ -229,6 +229,8 @@ class ConsoleFBController extends Controller
 				$_SESSION['facebook_details_1'] = $oAuth2Client->debugToken($accessToken);
 				$_SESSION['facebook_details_2'] = $accessToken->getValue();
 
+				$arrCities = json_encode($arrCities, JSON_PRETTY_PRINT);
+				
 				return view('Console.fb', ["lit" => $arrTowns, "nuf" => $arrCities ]);
 
 
