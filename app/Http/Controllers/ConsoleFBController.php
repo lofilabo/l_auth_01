@@ -229,8 +229,7 @@ class ConsoleFBController extends Controller
 				$_SESSION['facebook_details_1'] = $oAuth2Client->debugToken($accessToken);
 				$_SESSION['facebook_details_2'] = $accessToken->getValue();
 
-				$arrCities = json_encode($arrCities, JSON_PRETTY_PRINT);
-				$arrCities = "<pre>" . $arrCities . "</pre>";
+				//$arrCities = json_encode($arrCities, JSON_PRETTY_PRINT);
 
 				return view('Console.fb', ["lit" => $arrTowns, "nuf" => $arrCities ]);
 
@@ -329,8 +328,8 @@ class ConsoleFBController extends Controller
 		//dd($node); 	
 		//$bh = $_SESSION['facebook_details_1'];
 		//dd( $res );
-		$arrCities = json_encode($arrCities, JSON_PRETTY_PRINT);
-		$arrCities = "<pre>" . $arrCities . "</pre>";
+		//$arrCities = json_encode($arrCities, JSON_PRETTY_PRINT);
+
 		//dd($_SESSION['facebook_details_2']);
 		return view('Console.fb', ["lit" => '', "nuf" => $arrCities ]);
 
