@@ -328,7 +328,7 @@ class ConsoleFBController extends Controller
 		//dd($node); 	
 		//$bh = $_SESSION['facebook_details_1'];
 		//dd( $res );
-		
+		$arrCities = json_encode($arrCities, JSON_PRETTY_PRINT);
 		//dd($_SESSION['facebook_details_2']);
 		return view('Console.fb', ["lit" => '', "nuf" => $arrCities ]);
 
