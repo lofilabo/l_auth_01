@@ -99,12 +99,13 @@
 
 
 
+
 <!-- Attachment Modal -->
 <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="edit-modal-label">Edit Data</h5>
+        <h5 class="modal-title" id="edit-modal-label">Candidate Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -116,24 +117,64 @@
             </div>
 
             <div class="card-body">
-                <!-- id -->
+
+           
+
                 <div class="form-group">
-                    <label class="col-form-label" for="modal-input-id">Id (just for reference not meant to be shown to the general public) </label>
-                    <input type="text" name="modal-input-id" class="form-control" id="modal-input-id" required>
+                    <label class="col-form-label" for="modal-input-description">FName</label>
+                    <input type="text" name="modal-input-fname" class="form-control" id="modal-input-fname" required>
                 </div>
-                <!-- /id -->
-                <!-- name -->
                 <div class="form-group">
-                    <label class="col-form-label" for="modal-input-name">Name</label>
-                    <input type="text" name="modal-input-name" class="form-control" id="modal-input-name" required autofocus>
+                    <label class="col-form-label" for="modal-input-description">LName</label>
+                    <input type="text" name="modal-input-lname" class="form-control" id="modal-input-lname" required>
                 </div>
-                <!-- /name -->
-                <!-- description -->
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">Email</label>
-                    <input type="text" name="modal-input-description" class="form-control" id="modal-input-description" required>
+                    <input type="text" name="modal-input-email" class="form-control" id="modal-input-email" required>
                 </div>
-                <!-- /description -->
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">Tel</label>
+                    <input type="text" name="modal-input-tel" class="form-control" id="modal-input-tel" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">Ketai</label>
+                    <input type="text" name="modal-input-ketai" class="form-control" id="modal-input-ketai" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">Person in Charge</label>
+                    <input type="text" name="modal-input-personincharge" class="form-control" id="modal-input-personincharge" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">URL</label>
+                    <input type="text" name="modal-input-url" class="form-control" id="modal-input-url" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">Contact</label>
+                    <input type="text" name="modal-input-contactother" class="form-control" id="modal-input-contactother" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">CV</label>
+                    <textarea class="form-control" name="modal-input-cv" class="form-control" id="modal-input-cv" rows="12"></textarea>
+                    
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">Note 1</label>
+                    <input type="text" name="modal-input-note1" class="form-control" id="modal-input-note1" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">Note 2</label>
+                    <input type="text" name="modal-input-note2" class="form-control" id="modal-input-note2" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">Note 3</label>
+                    <input type="text" name="modal-input-note3" class="form-control" id="modal-input-note3" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">Note 4</label>
+                    <input type="text" name="modal-input-note4" class="form-control" id="modal-input-note4" required>
+                </div>
+
+
             </div>
 
           </div>
@@ -163,18 +204,36 @@
           $('#edit-modal').on('show.bs.modal', function() {
             var el = $(".edit-item-trigger-clicked"); // See how its usefull right here? 
             var row = el.closest(".data-row");
-
-            // get the data
             var id = el.data('item-id');
+            /*
             var name = row.children(".name").text();
             var description = row.children(".description").text();
             var ajaxtail = row.children(".ajaxtail").text();
+            */
+            $.ajax({
+              url: "/recruiters/recruiter/" + id,
+              context: document.body
+            }).done(function(incm) {
+                //console.log(incm);
+                jncm = JSON.parse(incm);
+                jncm = jncm[0];
+                $("#modal-input-contactother").val(  jncm.contactother  );
+                $("#modal-input-cv").val(  jncm.cv  );
+                $("#modal-input-email").val(  jncm.email  );
+                $("#modal-input-fname").val(  jncm.fname  );
+                $("#modal-input-ketai").val(  jncm.ketai  );
+                $("#modal-input-lname").val(  jncm.lname  );
+                $("#modal-input-note1").val(  jncm.note1  );
+                $("#modal-input-note1").val(  jncm.note2  );
+                $("#modal-input-note1").val(  jncm.note3  );
+                $("#modal-input-note1").val(  jncm.note4  );
+                $("#modal-input-personincharge").val(  jncm.personincharge  );
+                $("#modal-input-tel").val(  jncm.tel  );
+                $("#modal-input-url").val(  jncm.url  );
+                
+            });
 
-            // fill the data in the input fields
-            $("#modal-input-id").val(id);
-            $("#modal-input-name").val(name);
-            $("#modal-input-description").val(description);
-            $("#modal-input-ajaxtail").val(ajaxtail);
+
 
           })
 

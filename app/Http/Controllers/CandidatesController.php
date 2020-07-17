@@ -24,7 +24,8 @@ class CandidatesController extends Controller
         return view('Candidates.read_candidates', ["arr" => $arrCities]);
     }
     public function read_one($id){
-        return view('Candidates.read_candidates', ["whoami" => "I am Graahl " . $id]);
+        $arrCities = Candidates::where('id', $id)->get()->toJson();
+        return $arrCities;
     }
     public function new_one(){
         return view('Candidates.read_candidates', ["whoami" => "I am Euronymous"]);

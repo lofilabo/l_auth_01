@@ -24,7 +24,8 @@ class RecruitersController extends Controller
         return view('Recruiters.read_recruiters', ["arr" => $arrCities]);
     }
     public function read_one($id){
-        return view('Employers.read_employers', ["whoami" => "I am Graahl " . $id]);
+        $arrCities = Recruiters::where('id', $id)->get()->toJson();
+        return $arrCities;
     }
     public function new_one(){
         return view('Employers.read_employers', ["whoami" => "I am Euronymous"]);

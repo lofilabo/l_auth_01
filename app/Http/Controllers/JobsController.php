@@ -24,8 +24,8 @@ class JobsController extends Controller
         return view('Jobs.read_jobs', ["arr" => $arrCities]);
     }
     public function read_one($id){
-        return view('Jobs.read_jobs', ["whoami" => "I am Graahl " . $id]);
-    }
+        $arrCities = Jobs::where('id', $id)->get()->toJson();
+        return $arrCities;}
     public function new_one(){
         return view('Jobs.read_jobs', ["whoami" => "I am Euronymous"]);
     }
