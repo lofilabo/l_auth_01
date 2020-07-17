@@ -68,12 +68,12 @@ Route::prefix('/jobs')->group(function() {
   Route::get('/update', 'JobsController@update_one');
 });
 
-Route::prefix('/employers')->group(function() {
-  Route::get('/', 'EmployersController@read_many');
-  Route::get('/employer/{id}', 'EmployersController@read_one');
-  Route::get('/new', 'EmployersController@new_one');
-  Route::get('/create', 'EmployersController@create_one');
-  Route::get('/update', 'EmployersController@update_one');
+Route::prefix('/recruiters')->group(function() {
+  Route::get('/', 'RecruitersController@read_many');
+  Route::get('/recruiter/{id}', 'RecruitersController@read_one');
+  Route::get('/new', 'RecruitersController@new_one');
+  Route::get('/create', 'RecruitersController@create_one');
+  Route::get('/update', 'RecruitersController@update_one');
 });
 
 Route::prefix('console/fb')->group(function() {

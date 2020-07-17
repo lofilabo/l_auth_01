@@ -63,7 +63,7 @@
 
     .sb-h-adjust{
         height:20px;
-        background-color:#aaaaaa !important;
+        background-color:#880000 !important;
     }
 
     .topmenu-hider{
@@ -83,7 +83,7 @@
 
     .sb-h-adjust{
         height:60px;
-        background-color:#aaaaaa  !important;
+        background-color:#440000  !important;
     }
 
     .topmenu-hider{
@@ -93,16 +93,19 @@
 }
 
 
-.topbar{
-	background-color:#aaaaaa;
+.topbar {
+	background-color:#440000;
+    color:#ff0000;
     padding: 10px 10px 10px 20px !important;
 }
 
+.mainsidebar{background-color:#440000 !important;}
+.mainsidebar2{background-color:#440000 !important;}
 
-.fa-envelope {color: purple !important;}
+.fa-envelope {color: lightyellow !important;}
 .fa-snowflake-o {color: pink !important;}
 .fa-star {color: red !important;}
-.fa-facebook-square {color: darkblue !important;}
+.fa-facebook-square {color: lightblue !important;}
 .fa-building {color: yellow !important;}
 </style>
 
@@ -119,7 +122,7 @@
 
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav class='pullup' id="sidebar">
+        <nav class='pullup mainsidebar' id="sidebar">
             
             <div class="sidebar-header sb-h-adjust">
                 <!--
@@ -134,7 +137,7 @@
 
             @else
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle mainsidebar2">
                         <i class="fa fa-envelope"></i>
                         Web Site Contact
                     </a>
@@ -152,7 +155,7 @@
 
 
                 <li class="active">
-                    <a href="#candidatesData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <a href="#candidatesData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle mainsidebar2">
                         <i class="fa fa-snowflake-o"></i>
                         Candidates
                     </a>
@@ -170,7 +173,7 @@
 
 
                 <li class="active">
-                    <a href="#jobsData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <a href="#jobsData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle mainsidebar2">
                         <i class="fa fa-star"></i>
                         Jobs
                     </a>
@@ -188,17 +191,17 @@
 
 
                 <li class="active">
-                    <a href="#employersData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <a href="#recruitersData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle mainsidebar2">
                         <i class="fa fa-building"></i>
-                        Employers
+                        Recruiters
                     </a>
-                    <ul class="collapse list-unstyled" id="employersData">
-                        <li><a href="/employers/">View All</a></li>
-                        <li><a href="/employers/new">New</a></li>
+                    <ul class="collapse list-unstyled" id="recruitersData">
+                        <li><a href="/recruiters/">View All</a></li>
+                        <li><a href="/recruiters/new">New</a></li>
                         {{--
-                        <li><a href="/employers/candidate/1">One</a></li>
-                        <li><a href="/employers/create">Create</a></li>
-                        <li><a href="/employers/update">Update</a></li>
+                        <li><a href="/recruiters/recruiter/1">One</a></li>
+                        <li><a href="/recruiters/create">Create</a></li>
+                        <li><a href="/recruiters/update">Update</a></li>
                         --}}
                     </ul>
                 </li>
@@ -206,7 +209,7 @@
 
 
                 <li class="active">
-                    <a href="#facebookConsole" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <a href="#facebookConsole" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle mainsidebar2">
                         <i class="fa fa-facebook-square" aria-hidden="true"></i>
                         Facebook Console
                     </a>
@@ -224,10 +227,10 @@
 
 
 		 @if (Auth::guest())
-                  <li ><a class="article" href="{{ route('login') }}"><i class="fa fa-sign-in"></i>Login</a></li>
-                  <li><a class="article" href="{{ route('register') }}"><i class="fa fa-registered"></i>Register</a></li>
+                  <li ><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i>Login</a></li>
+                  <li><a href="{{ route('register') }}"><i class="fa fa-registered"></i>Register</a></li>
 		@else
-                  <li>  <a class="article"  href="{{ route('logout') }}"   onclick="event.preventDefault();  document.getElementById('logout-form').submit();"><i class="fa fa-user"></i>Logout</a></li>
+                  <li>  <a href="{{ route('logout') }}"   onclick="event.preventDefault();  document.getElementById('logout-form').submit();"><i class="fa fa-user"></i>Logout</a></li>
 		@endif
 
             </ul>

@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Employers;
+use App\Recruiters;
 
-class EmployersController extends Controller
+class RecruitersController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,7 +20,8 @@ class EmployersController extends Controller
     }
 
     public function read_many(){
-        return view('Employers.read_employers', ["whoami" => "I am Nagash"]);
+        $arrCities = Recruiters::get()->toArray();
+        return view('Recruiters.read_recruiters', ["arr" => $arrCities]);
     }
     public function read_one($id){
         return view('Employers.read_employers', ["whoami" => "I am Graahl " . $id]);

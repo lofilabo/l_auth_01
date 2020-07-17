@@ -20,7 +20,8 @@ class JobsController extends Controller
     }
 
     public function read_many(){
-        return view('Jobs.read_jobs', ["whoami" => "I am Nagash"]);
+        $arrCities = Jobs::get()->toArray();
+        return view('Jobs.read_jobs', ["arr" => $arrCities]);
     }
     public function read_one($id){
         return view('Jobs.read_jobs', ["whoami" => "I am Graahl " . $id]);

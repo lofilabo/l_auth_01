@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Employers extends  _BaseModel 
+class Recruiters extends  _BaseModel 
 {
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'tbl_emp_employers';
+	protected $table = 'tbl_emp_recruiters';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

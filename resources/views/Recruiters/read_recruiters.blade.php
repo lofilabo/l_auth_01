@@ -1,54 +1,70 @@
 @extends('layouts.app')
-		@section('content')
-
-   {{$whoami}}
-
-{{--
-		<table id="example" class="table table-striped table-bordered" >
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>form</th>
-                <th>lead</th>
-                <th>made at</th>
-                <th>page</th>
-                <th>ad group</th>
-                <th>logged at</th>
-                
-            </tr>
-        </thead>
-		<tbody>
-
-
-				@foreach ($arr as $arrmember)
-		            <tr>
-             <td>{{$arrmember['ad_id']}} </td>
-             <td>{{$arrmember['form_id']}} </td>
-             <td>{{$arrmember['leadgen_id']}} </td>
-             <td>{{date('r', $arrmember['created_time'])}} </td>
-             <td>{{$arrmember['page_id']}} </td>
-             <td>{{$arrmember['adgroup_id']}} </td>
-             <td>{{$arrmember['created_at']}} </td>
-					   
-				   </tr>
-				@endforeach
-		</tbody>
-		</table>
---}}
-
-
+    @section('content')
 
 <style>
     .ajaxtail{
       display: none;
     }
 </style>
+
+
 <div class="main-container container-fluid">
   <!-- heading -->
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <h3 class="text-primary mr-auto">Employers</h3>
+        <h3 class="text-primary mr-auto">Organisations Recruiting Now</h3>
+      </div>
+    </div>
+  </div>
+  <!-- /heading -->
+  <!-- table -->
+  <table class="table table-striped table-bordered" id="myTable" cellspacing="0" width="100%">
+    <thead class="thead-dark">
+            <tr>
+                <th>id</th>
+                <th>fname</th>
+                <th>lname</th>
+                <th>email</th>
+                <th>tel</th>
+                <th>url</th>
+                <th>Created</th>
+                <th>action</th>
+                
+                
+            </tr>
+        </thead>
+    <tbody>
+        @foreach ($arr as $arrmember)
+
+
+      <tr class="data-row">
+        <td class="align-middle iteration">{{$arrmember['id']}}</td>
+          <td class="align-middle fname">{{$arrmember['fname']}} </td>
+          <td class="align-middle lname">{{$arrmember['lname']}} </td>
+          <td class="align-middle email">{{$arrmember['email']}}</td>
+          <td class="align-middle tel">{{$arrmember['tel']}} </td>
+          <td class="align-middle url">{{$arrmember['url']}} </td>
+          <td class="align-middle created_at">{{$arrmember['created_at']}} </td>        
+          <td class="align-middle"><button type="button" class="btn btn-success" id="edit-item" data-item-id="{{$arrmember['id']}}">edit</button></td>
+      </tr>
+
+
+
+        @endforeach
+    </tbody>
+    </table>
+
+
+
+
+{{--
+<div class="main-container container-fluid">
+  <!-- heading -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <h3 class="text-primary mr-auto">Candidates</h3>
       </div>
     </div>
   </div>
@@ -79,6 +95,10 @@
   </table>
   <!-- /table -->
 </div>
+--}}
+
+
+
 <!-- Attachment Modal -->
 <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -94,32 +114,28 @@
             <div class="card-header">
               <h2 class="m-0">Edit</h2>
             </div>
+
             <div class="card-body">
-              <!-- id -->
-              <div class="form-group">
-                <label class="col-form-label" for="modal-input-id">Id (just for reference not meant to be shown to the general public) </label>
-                <input type="text" name="modal-input-id" class="form-control" id="modal-input-id" required>
-              </div>
-              <!-- /id -->
-              <!-- name -->
-              <div class="form-group">
-                <label class="col-form-label" for="modal-input-name">Name</label>
-                <input type="text" name="modal-input-name" class="form-control" id="modal-input-name" required autofocus>
-              </div>
-              <!-- /name -->
-              <!-- description -->
-              <div class="form-group">
-                <label class="col-form-label" for="modal-input-description">Email</label>
-                <input type="text" name="modal-input-description" class="form-control" id="modal-input-description" required>
-              </div>
-              <!-- /description -->
-              <!-- ajax tail -->
-              <div class="form-group hiddencolumn">
-                <label class="col-form-label" for="modal-input-description">AJAX Tail</label>
-                <input type="text" name="modal-input-description" class="form-control" id="modal-input-ajaxtail" required>
-              </div>
-              <!-- /ajax tail -->
+                <!-- id -->
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-id">Id (just for reference not meant to be shown to the general public) </label>
+                    <input type="text" name="modal-input-id" class="form-control" id="modal-input-id" required>
+                </div>
+                <!-- /id -->
+                <!-- name -->
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-name">Name</label>
+                    <input type="text" name="modal-input-name" class="form-control" id="modal-input-name" required autofocus>
+                </div>
+                <!-- /name -->
+                <!-- description -->
+                <div class="form-group">
+                    <label class="col-form-label" for="modal-input-description">Email</label>
+                    <input type="text" name="modal-input-description" class="form-control" id="modal-input-description" required>
+                </div>
+                <!-- /description -->
             </div>
+
           </div>
         </form>
       </div>

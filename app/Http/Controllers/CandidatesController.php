@@ -20,7 +20,8 @@ class CandidatesController extends Controller
     }
 
     public function read_many(){
-        return view('Candidates.read_candidates', ["whoami" => "I am Nagash"]);
+        $arrCities = Candidates::get()->toArray();
+        return view('Candidates.read_candidates', ["arr" => $arrCities]);
     }
     public function read_one($id){
         return view('Candidates.read_candidates', ["whoami" => "I am Graahl " . $id]);
