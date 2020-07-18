@@ -53,27 +53,27 @@ Auth::routes();
 Route::get('/test', 'TestController@index');
 
 Route::prefix('/candidates')->group(function() {
-  Route::get('/', 'CandidatesController@read_many');
+  Route::get('/', 'CandidatesController@read_many')->name('candidates');
   Route::get('/candidate/{id}', 'CandidatesController@read_one');
   Route::get('/new', 'CandidatesController@new_one');
   Route::get('/create', 'CandidatesController@create_one');
-  Route::get('/update', 'CandidatesController@update_one');
+  Route::post('/update', 'CandidatesController@update_one');
 });
 
 Route::prefix('/jobs')->group(function() {
-  Route::get('/', 'JobsController@read_many');
+  Route::get('/', 'JobsController@read_many')->name('jobs');
   Route::get('/job/{id}', 'JobsController@read_one');
   Route::get('/new', 'JobsController@new_one');
   Route::get('/create', 'JobsController@create_one');
-  Route::get('/update', 'JobsController@update_one');
+  Route::post('/update', 'JobsController@update_one');
 });
 
 Route::prefix('/recruiters')->group(function() {
-  Route::get('/', 'RecruitersController@read_many');
+  Route::get('/', 'RecruitersController@read_many')->name('recruiters');
   Route::get('/recruiter/{id}', 'RecruitersController@read_one');
   Route::get('/new', 'RecruitersController@new_one');
   Route::get('/create', 'RecruitersController@create_one');
-  Route::get('/update', 'RecruitersController@update_one');
+  Route::post('/update', 'RecruitersController@update_one');
 });
 
 Route::prefix('console/fb')->group(function() {

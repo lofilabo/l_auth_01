@@ -13,28 +13,31 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <h3 class="text-primary mr-auto">Jobs</h3>
+        <h1 class="text-primary mr-auto">JOBS AVAILABLE</h1>
       </div>
     </div>
   </div>
   <!-- /heading -->
   <!-- table -->
+  <!-- table -->
   <table class="table table-striped table-bordered" id="myTable" cellspacing="0" width="100%">
     <thead class="thead-dark">
             <tr>
-                <th>id</th>
-                <th>fname</th>
-                <th>lname</th>
-                <th>email</th>
-                <th>tel</th>
-                <th>url</th>
-                <th>Created</th>
+                <th><a href='?action=idup'><i class="fa fa-arrow-up"></i></a><a href='?action=iddown'><i class="fa fa-arrow-down"></i></a>&nbsp; id</th>
+                <th><a href='?action=fnameup'><i class="fa fa-arrow-up"></i></a><a href='?action=fnamedown'><i class="fa fa-arrow-down"></i></a>&nbsp; fname</th>
+                <th><a href='?action=lnameup'><i class="fa fa-arrow-up"></i></a><a href='?action=lnamedown'><i class="fa fa-arrow-down"></i></a>&nbsp; lname</th>
+                <th><a href='?action=emailup'><i class="fa fa-arrow-up"></i></a><a href='?action=emaildown'><i class="fa fa-arrow-down"></i></a>&nbsp; email</th>
+                <th><a href='?action=telup'><i class="fa fa-arrow-up"></i></a><a href='?action=teldown'><i class="fa fa-arrow-down"></i></a>&nbsp; tel</th>
+                <th><a href='?action=urlup'><i class="fa fa-arrow-up"></i></a><a href='?action=urldown'><i class="fa fa-arrow-down"></i></a>&nbsp; url</th>
+                <th><a href='?action=createdup'><i class="fa fa-arrow-up"></i></a><a href='?action=createddown'><i class="fa fa-arrow-down"></i></a>&nbsp; Created</th>
+                <th>Status</th>
                 <th>action</th>
                 
                 
             </tr>
         </thead>
     <tbody>
+      
         @foreach ($arr as $arrmember)
 
 
@@ -46,10 +49,9 @@
           <td class="align-middle tel">{{$arrmember['tel']}} </td>
           <td class="align-middle url">{{$arrmember['url']}} </td>
           <td class="align-middle created_at">{{$arrmember['created_at']}} </td>        
+          <td class="align-middle created_at">{{$stat[$arrmember['status']]}} </td>        
           <td class="align-middle"><button type="button" class="btn btn-success" id="edit-item" data-item-id="{{$arrmember['id']}}">edit</button></td>
       </tr>
-
-
 
         @endforeach
     </tbody>
@@ -100,9 +102,6 @@
 
 
 <!-- Attachment Modal -->
-
-
-<!-- Attachment Modal -->
 <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -112,7 +111,8 @@
         </button>
       </div>
       <div class="modal-body" id="attachment-body-content">
-        <form id="edit-form" class="form-horizontal" method="POST" action="">
+        <form id="edit-form" class="form-horizontal" method="POST" action="/jobs/update?action={{$action}}">
+          {{csrf_field()}}
           <div class="card text-white bg-dark mb-0">
             <div class="card-header">
               <h2 class="m-0">Edit</h2>
@@ -121,38 +121,51 @@
             <div class="card-body">
 
            
+                <input type="text" name="modal-input-id" class="form-control" id="modal-input-id" >
+                
+
 
                 <div class="form-group">
+                    <label class="col-form-label" for="modal-input-status">Status</label>
+                    <select name="modal-input-status" class="form-control" id="modal-input-status">
+                    @foreach ($stat as $statkey=>$statvalue)
+                    <option value="{{$statkey}}"> 
+                      {{$statvalue}}
+                    </option>
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">FName</label>
-                    <input type="text" name="modal-input-fname" class="form-control" id="modal-input-fname" required>
+                    <input type="text" name="modal-input-fname" class="form-control" id="modal-input-fname" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">LName</label>
-                    <input type="text" name="modal-input-lname" class="form-control" id="modal-input-lname" required>
+                    <input type="text" name="modal-input-lname" class="form-control" id="modal-input-lname" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">Email</label>
-                    <input type="text" name="modal-input-email" class="form-control" id="modal-input-email" required>
+                    <input type="text" name="modal-input-email" class="form-control" id="modal-input-email" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">Tel</label>
-                    <input type="text" name="modal-input-tel" class="form-control" id="modal-input-tel" required>
+                    <input type="text" name="modal-input-tel" class="form-control" id="modal-input-tel" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">Ketai</label>
-                    <input type="text" name="modal-input-ketai" class="form-control" id="modal-input-ketai" required>
+                    <input type="text" name="modal-input-ketai" class="form-control" id="modal-input-ketai" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">Person in Charge</label>
-                    <input type="text" name="modal-input-personincharge" class="form-control" id="modal-input-personincharge" required>
+                    <input type="text" name="modal-input-personincharge" class="form-control" id="modal-input-personincharge" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">URL</label>
-                    <input type="text" name="modal-input-url" class="form-control" id="modal-input-url" required>
+                    <input type="text" name="modal-input-url" class="form-control" id="modal-input-url" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">Contact</label>
-                    <input type="text" name="modal-input-contactother" class="form-control" id="modal-input-contactother" required>
+                    <input type="text" name="modal-input-contactother" class="form-control" id="modal-input-contactother" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">CV</label>
@@ -161,30 +174,42 @@
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">Note 1</label>
-                    <input type="text" name="modal-input-note1" class="form-control" id="modal-input-note1" required>
+                    <input type="text" name="modal-input-note1" class="form-control" id="modal-input-note1" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">Note 2</label>
-                    <input type="text" name="modal-input-note2" class="form-control" id="modal-input-note2" required>
+                    <input type="text" name="modal-input-note2" class="form-control" id="modal-input-note2" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">Note 3</label>
-                    <input type="text" name="modal-input-note3" class="form-control" id="modal-input-note3" required>
+                    <input type="text" name="modal-input-note3" class="form-control" id="modal-input-note3" >
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-description">Note 4</label>
-                    <input type="text" name="modal-input-note4" class="form-control" id="modal-input-note4" required>
+                    <input type="text" name="modal-input-note4" class="form-control" id="modal-input-note4" >
+
                 </div>
 
 
             </div>
 
           </div>
+
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+        <button id="save-button" type="button" class="btn btn-primary">Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        <script>
+          
+          $( "#save-button" ).click(function() {
+            $( "#edit-form" ).submit();
+          });
+
+        </script>
+
+
       </div>
     </div>
   </div>
@@ -216,7 +241,7 @@
               url: "/jobs/job/" + id,
               context: document.body
             }).done(function(incm) {
-                //console.log(incm);
+                var jsonstat = JSON.parse('<?php echo(json_encode($stat, JSON_FORCE_OBJECT)); ?>');
                 jncm = JSON.parse(incm);
                 jncm = jncm[0];
                 $("#modal-input-contactother").val(  jncm.contactother  );
@@ -232,11 +257,11 @@
                 $("#modal-input-personincharge").val(  jncm.personincharge  );
                 $("#modal-input-tel").val(  jncm.tel  );
                 $("#modal-input-url").val(  jncm.url  );
-                
+                //$("#modal-input-status").val(  jsonstat[jncm.status]  );
+                $("#modal-input-status").val(  jncm.status  );
+                $("#modal-input-id").val( id );
+
             });
-
-
-
           })
 
           // on modal hide

@@ -66,7 +66,7 @@
 
     .sb-h-adjust{
         height:20px;
-        background-color:#880000 !important;
+        background-color:#808080 !important;
     }
 
     .topmenu-hider{
@@ -86,7 +86,7 @@
 
     .sb-h-adjust{
         height:60px;
-        background-color:#440000  !important;
+        background-color:#808080  !important;
     }
 
     .topmenu-hider{
@@ -97,13 +97,13 @@
 
 
 .topbar {
-	background-color:#440000;
-    color:#ff0000;
+	background-color:#808080;
+    color:#666666;
     padding: 10px 10px 10px 20px !important;
 }
 
-.mainsidebar{background-color:#440000 !important;}
-.mainsidebar2{background-color:#440000 !important;}
+.mainsidebar{background-color:#808080 !important;}
+.mainsidebar2{background-color:#808080 !important;}
 
 .fa-envelope {color: lightyellow !important;}
 .fa-snowflake-o {color: pink !important;}
