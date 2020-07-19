@@ -23,7 +23,7 @@ class CandidatesController extends Controller
         Statuscodes::where('statusid', "!=", "99")->get()->each(function($pair){
             $this->statuscodes[$pair->statusid] = $pair->statusdescription;
         });
-        //$this->middleware('auth');
+        $this->middleware('auth');
         //$this->middleware('auth:admin');
     }
 

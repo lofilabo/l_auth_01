@@ -24,7 +24,7 @@ class RecruitersController extends Controller
             $this->statuscodes[$pair->statusid] = $pair->statusdescription;
         });
 
-        //$this->middleware('auth');
+        $this->middleware('auth');
         //$this->middleware('auth:admin');
     }
 
