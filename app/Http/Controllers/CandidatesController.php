@@ -20,8 +20,7 @@ class CandidatesController extends Controller
      */
     public function __construct()
     {
-        Statuscodes::get()->each(function($pair){
-            //var_dump($pair->statusid);
+        Statuscodes::where('statusid', "!=", "99")->get()->each(function($pair){
             $this->statuscodes[$pair->statusid] = $pair->statusdescription;
         });
         //$this->middleware('auth');
@@ -33,49 +32,49 @@ class CandidatesController extends Controller
         //dd($action);
         switch ($action){
             case "idup":
-                $arrCities = Candidates::orderBy('id', 'ASC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('id', 'ASC')->get()->toArray();
                 break;
             case "iddown":
-                $arrCities = Candidates::orderBy('id', 'DESC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('id', 'DESC')->get()->toArray();
                 break;
             case "fnameup":
-                $arrCities = Candidates::orderBy('fname', 'ASC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('fname', 'ASC')->get()->toArray();
                 break;
             case "fnamedown":
-                $arrCities = Candidates::orderBy('fname', 'DESC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('fname', 'DESC')->get()->toArray();
                 break;
             case "lnameup":
-                $arrCities = Candidates::orderBy('lname', 'ASC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('lname', 'ASC')->get()->toArray();
                 break;
             case "lnamedown":
-                $arrCities = Candidates::orderBy('lname', 'DESC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('lname', 'DESC')->get()->toArray();
                 break;
             case "emailup":
-                $arrCities = Candidates::orderBy('email', 'ASC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('email', 'ASC')->get()->toArray();
                 break;
             case "emaildown":
-                $arrCities = Candidates::orderBy('email', 'DESC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('email', 'DESC')->get()->toArray();
                 break;
             case "telup":
-                $arrCities = Candidates::orderBy('tel', 'ASC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('tel', 'ASC')->get()->toArray();
                 break;
             case "teldown":
-                $arrCities = Candidates::orderBy('tel', 'DESC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('tel', 'DESC')->get()->toArray();
                 break;
             case "urlup":
-                $arrCities = Candidates::orderBy('url', 'ASC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('url', 'ASC')->get()->toArray();
                 break;
             case "urldown":
-                $arrCities = Candidates::orderBy('url', 'DESC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('url', 'DESC')->get()->toArray();
                 break;
             case "createtup":
-                $arrCities = Candidates::orderBy('created_at', 'ASC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('created_at', 'ASC')->get()->toArray();
                 break;
             case "createddown":
-                $arrCities = Candidates::orderBy('created_at', 'DESC')->get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->orderBy('created_at', 'DESC')->get()->toArray();
                 break;
             default:
-                $arrCities = Candidates::get()->toArray();
+                $arrCities = Candidates::where('status', "!=", "99")->get()->toArray();
         }
         
         return view('Candidates.read_candidates', ["arr" => $arrCities, "stat"=>$this->statuscodes, "action"=>$action]);
@@ -131,7 +130,11 @@ class CandidatesController extends Controller
         return redirect()->route('candidates', ['action' => $request->input('action')] );
     }
     public function delete_one(Request $request){
-        return view('Candidates.read_candidates', ["whoami" => "I am Ildjaarn"]);
+        $id = $request['id'];
+        $arrCities = Candidates::find($id);
+        $arrCities->status =   ("99");
+        $rez = $arrCities->save();
+        return redirect()->route('candidates', ['action' => $request->input('action')] );
     }
 
 }

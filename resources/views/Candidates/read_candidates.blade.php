@@ -1,3 +1,5 @@
+
+
 @extends('layouts.app')
 		@section('content')
 
@@ -48,8 +50,11 @@
           <td class="align-middle tel">{{$arrmember['tel']}} </td>
           <td class="align-middle url">{{$arrmember['url']}} </td>
           <td class="align-middle created_at">{{$arrmember['created_at']}} </td>        
-          <td class="align-middle created_at">{{$stat[$arrmember['status']]}} </td>        
-          <td class="align-middle"><button type="button" class="btn btn-success" id="edit-item" data-item-id="{{$arrmember['id']}}">edit</button></td>
+          <td class="align-middle status">{{$stat[$arrmember['status']]}} </td>        
+          <td class="align-middle">
+            <a type="button" class="btn btn-danger" href="/candidates/del?id={{$arrmember['id']}}">del</a>
+            <button type="button" class="btn btn-success" id="edit-item" data-item-id="{{$arrmember['id']}}">edit</button>
+          </td>
       </tr>
 
 
@@ -89,7 +94,7 @@
         <td class="align-middle name">Name 1</td>
         <td class="align-middle word-break description">Description 1</td>
         <td class="align-middle">
-          <button type="button" class="btn btn-success" id="edit-item" data-item-id="1">edit</button>
+          <button type="button" class="btn btn-danger" id="edit-item" data-item-id="1">delete</button>
         </td>
         <td class="align-middle word-break ajaxtail">Candidate/47/76</td>
         
@@ -120,12 +125,7 @@
             </div>
 
             <div class="card-body">
-
-           
-                <input type="text" name="modal-input-id" class="form-control" id="modal-input-id" >
-                
-
-
+                <input type="hidden" name="modal-input-id" class="form-control" id="modal-input-id" >
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-status">Status</label>
                     <select name="modal-input-status" class="form-control" id="modal-input-status">

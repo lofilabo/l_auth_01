@@ -49,8 +49,11 @@
           <td class="align-middle tel">{{$arrmember['tel']}} </td>
           <td class="align-middle url">{{$arrmember['url']}} </td>
           <td class="align-middle created_at">{{$arrmember['created_at']}} </td>        
-          <td class="align-middle created_at">{{$stat[$arrmember['status']]}} </td>        
-          <td class="align-middle"><button type="button" class="btn btn-success" id="edit-item" data-item-id="{{$arrmember['id']}}">edit</button></td>
+          <td class="align-middle status">{{$stat[$arrmember['status']]}} </td>        
+
+          <td class="align-middle"><button type="button" class="btn btn-success" id="edit-item" data-item-id="{{$arrmember['id']}}">edit</button>
+          <a type="button" class="btn btn-danger" href="/jobs/del?id={{$arrmember['id']}}">del</a>
+          </td>
       </tr>
 
         @endforeach
@@ -106,7 +109,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="edit-modal-label">Candidate Details</h5>
+        <h5 class="modal-title" id="edit-modal-label">Job Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -119,12 +122,7 @@
             </div>
 
             <div class="card-body">
-
-           
-                <input type="text" name="modal-input-id" class="form-control" id="modal-input-id" >
-                
-
-
+                <input type="hidden" name="modal-input-id" class="form-control" id="modal-input-id" >
                 <div class="form-group">
                     <label class="col-form-label" for="modal-input-status">Status</label>
                     <select name="modal-input-status" class="form-control" id="modal-input-status">

@@ -20,8 +20,7 @@ class RecruitersController extends Controller
      */
     public function __construct()
     {
-        Statuscodes::get()->each(function($pair){
-            //var_dump($pair->statusid);
+        Statuscodes::where('statusid', "!=", "99")->get()->each(function($pair){
             $this->statuscodes[$pair->statusid] = $pair->statusdescription;
         });
 
@@ -36,49 +35,49 @@ class RecruitersController extends Controller
         //dd($action);
         switch ($action){
             case "idup":
-                $arrCities = Recruiters::orderBy('id', 'ASC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('id', 'ASC')->get()->toArray();
                 break;
             case "iddown":
-                $arrCities = Recruiters::orderBy('id', 'DESC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('id', 'DESC')->get()->toArray();
                 break;
             case "fnameup":
-                $arrCities = Recruiters::orderBy('fname', 'ASC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('fname', 'ASC')->get()->toArray();
                 break;
             case "fnamedown":
-                $arrCities = Recruiters::orderBy('fname', 'DESC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('fname', 'DESC')->get()->toArray();
                 break;
             case "lnameup":
-                $arrCities = Recruiters::orderBy('lname', 'ASC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('lname', 'ASC')->get()->toArray();
                 break;
             case "lnamedown":
-                $arrCities = Recruiters::orderBy('lname', 'DESC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('lname', 'DESC')->get()->toArray();
                 break;
             case "emailup":
-                $arrCities = Recruiters::orderBy('email', 'ASC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('email', 'ASC')->get()->toArray();
                 break;
             case "emaildown":
-                $arrCities = Recruiters::orderBy('email', 'DESC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('email', 'DESC')->get()->toArray();
                 break;
             case "telup":
-                $arrCities = Recruiters::orderBy('tel', 'ASC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('tel', 'ASC')->get()->toArray();
                 break;
             case "teldown":
-                $arrCities = Recruiters::orderBy('tel', 'DESC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('tel', 'DESC')->get()->toArray();
                 break;
             case "urlup":
-                $arrCities = Recruiters::orderBy('url', 'ASC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('url', 'ASC')->get()->toArray();
                 break;
             case "urldown":
-                $arrCities = Recruiters::orderBy('url', 'DESC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('url', 'DESC')->get()->toArray();
                 break;
             case "createtup":
-                $arrCities = Recruiters::orderBy('created_at', 'ASC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('created_at', 'ASC')->get()->toArray();
                 break;
             case "createddown":
-                $arrCities = Recruiters::orderBy('created_at', 'DESC')->get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->orderBy('created_at', 'DESC')->get()->toArray();
                 break;
             default:
-                $arrCities = Recruiters::get()->toArray();
+                $arrCities = Recruiters::where('status', "!=", "99")->get()->toArray();
         }
 
         return view('Recruiters.read_recruiters', ["arr" => $arrCities, "stat"=>$this->statuscodes, "action"=>$action]);
@@ -133,7 +132,11 @@ class RecruitersController extends Controller
 
     }
     public function delete_one(Request $request){
-        return view('Employers.read_employers', ["whoami" => "I am Ildjaarn"]);
+        $id = $request['id'];
+        $arrCities = Recruiters::find($id);
+        $arrCities->status          =   ("99");
+        $rez = $arrCities->save();
+        return redirect()->route('recruiters', ['action' => $request->input('action')] );
     }
 
 }
