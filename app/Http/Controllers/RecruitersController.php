@@ -88,10 +88,26 @@ class RecruitersController extends Controller
         return $arrCities;
     }
     public function new_one(){
-        return view('Employers.read_employers', ["whoami" => "I am Euronymous"]);
+        return view('Recruiters.new_recruiters',["stat"=>$this->statuscodes]);
     }
     public function create_one(Request $request){
-        return view('Employers.read_employers', ["whoami" => "I am Abbath"]);
+        $arrCities = new Recruiters;
+        $arrCities->fname           =   ($request['modal-input-fname']);
+        $arrCities->lname           =   ($request['modal-input-lname']);
+        $arrCities->tel             =   ($request['modal-input-tel']);
+        $arrCities->email           =   ($request['modal-input-email']);
+        $arrCities->url             =   ($request['modal-input-url']);
+        $arrCities->personincharge  =   ($request['modal-input-personincharge']);
+        $arrCities->ketai           =   ($request['modal-input-ketai']);
+        $arrCities->contactother    =   ($request['modal-input-contactother']);
+        $arrCities->cv              =   ($request['modal-input-note1']);
+        $arrCities->note1           =   ($request['modal-input-note2']);
+        $arrCities->note2           =   ($request['modal-input-note2']);
+        $arrCities->note3           =   ($request['modal-input-note2']);
+        $arrCities->note4           =   ($request['modal-input-note2']);
+        $arrCities->status          =   1;
+        $rez = $arrCities->save();
+        return redirect()->route('recruiters', ['action' => $request->input('action')] );
     }
     public function update_one(Request $request){
         $id = $request['modal-input-id'];
