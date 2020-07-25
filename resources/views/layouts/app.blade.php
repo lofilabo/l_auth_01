@@ -47,6 +47,11 @@
     <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
 
 <style>
+h1.text-primary{
+    color:#aaaaaa !important;
+}
+
+
 .fixed-height-001{
 	height:40px;
 }
@@ -54,6 +59,7 @@
 .content-heightfixer{
 	margin: 0px 10px 10px -10px !important;
 }
+
 
 @media (max-width: 600px) {
     .btn-leftpadding-fixer{

@@ -55,11 +55,14 @@ Route::get('/test', array('middleware' => 'cors', 'uses' => 'TestController@inde
 
 //Route::view('/summernote','summernote');
 Route::prefix('/documents')->group(function() {
-  Route::get('/','DocumentController@read_many')->name('documentPersist');
+  Route::get('/','DocumentController@read_many')->name('documentViewall');
   Route::post('/create','DocumentController@create_one')->name('documentPersist');
   Route::get('/new'  ,'DocumentController@new_one');
-  Route::get('/document/{id}','DocumentController@show_one');
-  Route::get('/test','DocumentController@show')->name('documentDisplay');
+  Route::get('/show/{id}','DocumentController@show_one');
+  Route::get('/view/{id}','DocumentController@view_one');
+  Route::get('/edit/{id}','DocumentController@edit_one')->name('documentEdit');
+  Route::post('/update','DocumentController@update_one')->name('documentUpdate');
+  Route::get('/del/{id}','DocumentController@del_one');
 });
 
 Route::prefix('/notes/general')->group(function() {

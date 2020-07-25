@@ -25,7 +25,7 @@
     <thead class="thead-dark">
             <tr>
                 <th>id</th>
-                <th>Contents</th>
+                <th>Title</th>
                 <th>Created</th>
                 <th>action</th>
                 
@@ -39,11 +39,13 @@
 
       <tr class="data-row">
         <td class="align-middle iteration">{{$arrmember['id']}}</td>
-          <td class="align-middle fname">{{$arrmember['content']}} </td>
+          <td class="align-middle fname">{{$arrmember['title']}} </td>
           <td class="align-middle created_at">{{$arrmember['created_at']}} </td>        
           <td class="align-middle">
-            <a type="button" class="btn btn-danger" href="/candidates/del?id={{$arrmember['id']}}">del</a>
-            <button type="button" class="btn btn-success" id="edit-item" data-item-id="{{$arrmember['id']}}">edit</button>
+            <a type="button" class="btn btn-danger" href="/documents/del/{{$arrmember['id']}}">del</a>
+            <a type="button" class="btn btn-success" href="/documents/edit/{{$arrmember['id']}}">edit</a>
+            <button type="button" class="btn btn-warning" id="edit-item" data-item-id="{{$arrmember['id']}}">quick view</button>
+            <a type="button" class="btn btn-info" href="/documents/show/{{$arrmember['id']}}">fullpage show</a>
           </td>
       </tr>
 
@@ -54,102 +56,23 @@
 		</table>
 
 
-
 <!-- Attachment Modal -->
 <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="edit-modal-label">Candidate Details</h5>
+        <h5 class="modal-title" id="edit-modal-label">Read Document</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" id="attachment-body-content">
-        <form id="edit-form" class="form-horizontal" method="POST" action="">
-          {{csrf_field()}}
-          <div class="card text-white bg-dark mb-0">
-            <div class="card-header">
-              <h2 class="m-0">Edit</h2>
-            </div>
+      
 
-            <div class="card-body">
-                <input type="hidden" name="modal-input-id" class="form-control" id="modal-input-id" >
-                
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">FName</label>
-                    <input type="text" name="modal-input-fname" class="form-control" id="modal-input-fname" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">LName</label>
-                    <input type="text" name="modal-input-lname" class="form-control" id="modal-input-lname" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">Email</label>
-                    <input type="text" name="modal-input-email" class="form-control" id="modal-input-email" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">Tel</label>
-                    <input type="text" name="modal-input-tel" class="form-control" id="modal-input-tel" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">Ketai</label>
-                    <input type="text" name="modal-input-ketai" class="form-control" id="modal-input-ketai" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">Person in Charge</label>
-                    <input type="text" name="modal-input-personincharge" class="form-control" id="modal-input-personincharge" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">URL</label>
-                    <input type="text" name="modal-input-url" class="form-control" id="modal-input-url" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">Contact</label>
-                    <input type="text" name="modal-input-contactother" class="form-control" id="modal-input-contactother" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">CV</label>
-                    <textarea class="form-control" name="modal-input-cv" class="form-control" id="modal-input-cv" rows="12"></textarea>
-                    
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">Note 1</label>
-                    <input type="text" name="modal-input-note1" class="form-control" id="modal-input-note1" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">Note 2</label>
-                    <input type="text" name="modal-input-note2" class="form-control" id="modal-input-note2" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">Note 3</label>
-                    <input type="text" name="modal-input-note3" class="form-control" id="modal-input-note3" >
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="modal-input-description">Note 4</label>
-                    <input type="text" name="modal-input-note4" class="form-control" id="modal-input-note4" >
-
-                </div>
-
-
-            </div>
-
-          </div>
-
-        </form>
       </div>
       <div class="modal-footer">
-        <button id="save-button" type="button" class="btn btn-primary">Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-        <script>
-          
-          $( "#save-button" ).click(function() {
-            $( "#edit-form" ).submit();
-          });
-
-        </script>
-
-
+       
       </div>
     </div>
   </div>
@@ -178,15 +101,14 @@
             var ajaxtail = row.children(".ajaxtail").text();
             */
             $.ajax({
-              url: "/candidates/candidate/" + id,
+              url: "/documents/view/" + id,
               context: document.body
             }).done(function(incm) {
-                jncm = JSON.parse(incm);
-                jncm = jncm[0];
-                $("#modal-input-contactother").val(  jncm.contactother  );
-                $("#modal-input-cv").val(  jncm.cv  );
-                $("#modal-input-id").val( id );
-
+              console.log(incm);
+                //jncm = JSON.parse(incm);
+                //jncm = jncm[0];
+                $("#attachment-body-content").html(  incm  );
+                
             });
           })
 

@@ -1,7 +1,13 @@
 @extends('layouts.app')
 		@section('content')
 
-		<table class="table table-striped table-bordered" id="myTable" cellspacing="0" width="100%">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-primary mr-auto">Facebook NEW LEADS</h1>
+      </div>
+    </div>
+  </div>		<table class="table table-striped table-bordered" id="myTable" cellspacing="0" width="100%">
         <thead class="thead-dark">
             <tr>
                 <th>id</th>
