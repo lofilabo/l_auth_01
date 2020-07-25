@@ -33,54 +33,54 @@ class JobsController extends Controller
         //dd($action);
         switch ($action){
             case "idup":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('id', 'ASC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('id', 'ASC')->get();
                 break;
             case "iddown":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('id', 'DESC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('id', 'DESC')->get();
                 break;
             case "fnameup":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('fname', 'ASC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('fname', 'ASC')->get();
                 break;
             case "fnamedown":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('fname', 'DESC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('fname', 'DESC')->get();
                 break;
             case "lnameup":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('lname', 'ASC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('lname', 'ASC')->get();
                 break;
             case "lnamedown":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('lname', 'DESC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('lname', 'DESC')->get();
                 break;
             case "emailup":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('email', 'ASC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('email', 'ASC')->get();
                 break;
             case "emaildown":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('email', 'DESC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('email', 'DESC')->get();
                 break;
             case "telup":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('tel', 'ASC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('tel', 'ASC')->get();
                 break;
             case "teldown":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('tel', 'DESC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('tel', 'DESC')->get();
                 break;
             case "urlup":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('url', 'ASC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('url', 'ASC')->get();
                 break;
             case "urldown":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('url', 'DESC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('url', 'DESC')->get();
                 break;
             case "createtup":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('created_at', 'ASC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('created_at', 'ASC')->get();
                 break;
             case "createddown":
-                $arrCities = Jobs::where('status', "!=", "99")->orderBy('created_at', 'DESC')->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->orderBy('created_at', 'DESC')->get();
                 break;
             default:
-                $arrCities = Jobs::where('status', "!=", "99")->get()->toArray();
+                $arrCities = Jobs::where('status', "!=", "99")->get();
         }
 
-        return view('Jobs.read_jobs', ["arr" => $arrCities, "stat"=>$this->statuscodes, "action"=>$action]);
+        return view('Jobs.read_jobs', ["arr" => $arrCities->toArray(), "stat"=>$this->statuscodes, "action"=>$action]);
     }
-    public function read_one($id){
+    public function read_one(Request $request, $id){
         $arrCities = Jobs::where('id', $id)->get()->toJson();
         return $arrCities;}
     public function new_one(){

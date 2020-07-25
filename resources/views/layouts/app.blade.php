@@ -32,8 +32,8 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-
-
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS CDN -->
@@ -102,6 +102,10 @@
     padding: 10px 10px 10px 20px !important;
 }
 
+.pushrightalittle{
+    padding: 0px 0px 0px 30px !important;
+}
+
 .mainsidebar{background-color:#808080 !important;}
 .mainsidebar2{background-color:#808080 !important;}
 
@@ -109,7 +113,11 @@
 .fa-snowflake-o {color: pink !important;}
 .fa-star {color: red !important;}
 .fa-facebook-square {color: lightblue !important;}
-.fa-building {color: yellow !important;}
+.fa-building {color: lightgreen !important;}
+.fa-bomb {color: orange !important;}
+.fa-edit {color: yellow !important;}
+
+.topbar-user-identification{color: darkgreen !important;}
 </style>
 
 </head>
@@ -211,6 +219,20 @@
 
 
 
+
+                <li class="active">
+                    <a href="#documentsData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle mainsidebar2">
+                        <i class="fa fa-edit"></i>
+                        Documents
+                    </a>
+                    <ul class="collapse list-unstyled" id="documentsData">
+                        <li><a href="/documents/">View All</a></li>
+                        <li><a href="/documents/new">New</a></li>
+                    </ul>
+                </li>
+
+
+
                 <li class="active">
                     <a href="#facebookConsole" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle mainsidebar2">
                         <i class="fa fa-facebook-square" aria-hidden="true"></i>
@@ -222,14 +244,31 @@
                         <li><a href="/console/fb/logout">Log Out</a></li>
 
                     </ul>
+
+                    @if (Auth::user())
+                        @if ( Auth::user()->job_title == 'admin' )
+                            <li class="active">
+                                <a href="#adminConsole" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle mainsidebar2">
+                                    <i class="fa fa-bomb" aria-hidden="true"></i>
+                                    Admin Console
+                                </a>                            
+                                <ul class="collapse list-unstyled" id="adminConsole">
+                                    <li><a href="/console/fb/leads/read">Users</a></li>
+                                </ul>
+                            </li>
+                        @endif
+                    @endif
+
                 </li>
+                <!--
                 <li><a href="#"><i class="fa fa-camera-retro"></i></i>Item</a></li>
                 <li><a href="#"><i class="fa fa-question"></i>Item</a></li>
                 <li><a href="#"><i class="fa fa-paper-plane"></i> Item</a> </li>
+                -->
         @endif
 
 
-		 @if (Auth::guest())
+		@if (Auth::guest())
                   <li ><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i>Login</a></li>
                   <li><a href="{{ route('register') }}"><i class="fa fa-registered"></i>Register</a></li>
 		@else
@@ -237,7 +276,7 @@
 		@endif
 
             </ul>
-
+            <!--
             <ul class="list-unstyled CTAs">
                <li>
                     <a href="#">Button</a>
@@ -246,6 +285,7 @@
                     <a href="" class="article">Button</a>
                 </li>
             </ul>
+            -->
         </nav>
 
         <!-- Page Content  -->
@@ -263,33 +303,21 @@
                     </button>
 			
                     <div class="topmenu-hider collapse navbar-collapse" id="navbarSupportedContent">
+                        <span class='pushrightalittle'>
+                            @if (Auth::user())
+                                <i><span class='topbar-user-identification'>Logged in as:&nbsp;&nbsp;</span></i>{{Auth::user()->name}}
+                            @endif
+                        </span>
                         <ul class="nav navbar-nav ml-auto">
-
-	                          <li class="nav-item active">
-	                                <a class="nav-link" href="#">Top Menu Item</a>
-                            	  </li>
-
+                            <li class="nav-item active"><a class="nav-link" href="#">Top Menu Item</a></li>
                             @if (Auth::guest())
-	                          <li class="nav-item active">
-	                                <a class="nav-link"  href="{{ route('login') }}">Login</a>
-                            	  </li>
-	                          <li class="nav-item active">
-	                                <a class="nav-link"  href="{{ route('register') }}">Register</a>
-                            	  </li>
+	                          <li class="nav-item active"><a class="nav-link"  href="{{ route('login') }}">Login</a></li>
+	                          <li class="nav-item active"><a class="nav-link"  href="{{ route('register') }}">Register</a></li>
                             @else
-	                          <li class="nav-item active">
-	                                <a class="nav-link" href="{{ route('logout') }}"   onclick="event.preventDefault();  document.getElementById('logout-form').submit();">Logout</a>
-                            	  </li>
+	                          <li class="nav-item active"><a class="nav-link" href="{{ route('logout') }}"onclick="event.preventDefault();  document.getElementById('logout-form').submit();">Logout</a></li>
                             @endif
 
-
-
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-
-
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                         </ul>
                     </div>
                 </div>

@@ -50,7 +50,27 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/test', 'TestController@index');
+//Route::get('/test', 'TestController@index');
+Route::get('/test', array('middleware' => 'cors', 'uses' => 'TestController@index'));
+
+//Route::view('/summernote','summernote');
+Route::prefix('/documents')->group(function() {
+  Route::get('/','DocumentController@read_many')->name('documentPersist');
+  Route::post('/create','DocumentController@create_one')->name('documentPersist');
+  Route::get('/new'  ,'DocumentController@new_one');
+  Route::get('/document/{id}','DocumentController@show_one');
+  Route::get('/test','DocumentController@show')->name('documentDisplay');
+});
+
+Route::prefix('/notes/general')->group(function() {
+  Route::get('/doc', 'Note_Base_Controller@get_read_many');
+  Route::get('/note/{id}', 'Note_Base_Controller@read_one');
+  Route::get('/{id}', 'Note_Base_Controller@read_many');
+  Route::get('/new', 'Note_Base_Controller@new_one');
+  Route::get('/del', 'Note_Base_Controller@delete_one');
+  Route::post('/create', 'Note_Base_Controller@create_one');
+  Route::post('/update', 'Note_Base_Controller@update_one');
+});
 
 Route::prefix('/candidates')->group(function() {
   Route::get('/', 'CandidatesController@read_many')->name('candidates');
@@ -150,10 +170,6 @@ Route::prefix('/resp_catchall')->group(function() {
   Route::get('/update', 'Resp_catchallController@update');
   Route::get('/delete', 'Resp_catchallController@delete');
 });
-
-
-
-
 
 Route::get('/home', 'HomeController@index');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');

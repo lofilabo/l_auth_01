@@ -24,6 +24,7 @@ class TestController extends Controller
      */
     public function index()
     {
-        return view('test', ["whoami" => "I am the Blasphemer"]);
+        return("ZWERG");
+        //return view('test', ["whoami" => "I am the Blasphemer"]);
     }
 }

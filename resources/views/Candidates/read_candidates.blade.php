@@ -65,48 +65,6 @@
 
 
 
-
-{{--
-<div class="main-container container-fluid">
-  <!-- heading -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <h3 class="text-primary mr-auto">Candidates</h3>
-      </div>
-    </div>
-  </div>
-  <!-- /heading -->
-  <!-- table -->
-  <table class="table table-striped table-bordered" id="myTable" cellspacing="0" width="100%">
-    <thead class="thead-dark">
-      <tr>
-        <th>#</th>
-        <th> Name</th>
-        <th> Description</th>
-        <th> Action</th>
-        <th class='ajaxtail'> AJAX</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="data-row">
-        <td class="align-middle iteration">1</td>
-        <td class="align-middle name">Name 1</td>
-        <td class="align-middle word-break description">Description 1</td>
-        <td class="align-middle">
-          <button type="button" class="btn btn-danger" id="edit-item" data-item-id="1">delete</button>
-        </td>
-        <td class="align-middle word-break ajaxtail">Candidate/47/76</td>
-        
-      </tr>
-    </tbody>
-  </table>
-  <!-- /table -->
-</div>
---}}
-
-
-
 <!-- Attachment Modal -->
 <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -252,9 +210,9 @@
                 $("#modal-input-ketai").val(  jncm.ketai  );
                 $("#modal-input-lname").val(  jncm.lname  );
                 $("#modal-input-note1").val(  jncm.note1  );
-                $("#modal-input-note1").val(  jncm.note2  );
-                $("#modal-input-note1").val(  jncm.note3  );
-                $("#modal-input-note1").val(  jncm.note4  );
+                $("#modal-input-note2").val(  jncm.note2  );
+                $("#modal-input-note3").val(  jncm.note3  );
+                $("#modal-input-note4").val(  jncm.note4  );
                 $("#modal-input-personincharge").val(  jncm.personincharge  );
                 $("#modal-input-tel").val(  jncm.tel  );
                 $("#modal-input-url").val(  jncm.url  );

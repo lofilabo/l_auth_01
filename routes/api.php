@@ -19,6 +19,11 @@ Route::get('/fbwebhook', 'FBWebhookController@getindex');
 Route::post('/fbwebhook/', 'FBWebhookController@postindex');
 Route::get('/fbwebhook/', 'FBWebhookController@getindex');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->middleware('cors')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/test', array('middleware' => 'auth:api', 'middleware' => 'cors',  'uses' => 'TestController@index'));
+
+//CORS example
+// Route::get('example', array('middleware' => 'cors', 'uses' => 'ExampleController@dummy'));

@@ -10,6 +10,7 @@ class AdminLoginController extends Controller
 {
     public function __construct()
     {
+      
       $this->middleware('guest:admin', ['except' => ['logout']]);
     }
 
@@ -28,6 +29,7 @@ class AdminLoginController extends Controller
 
       // Attempt to log the user in
       if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        
         // if successful, then redirect to their intended location
         return redirect()->intended(route('admin.dashboard'));
       }
@@ -38,6 +40,7 @@ class AdminLoginController extends Controller
 
     public function logout()
     {
+
         Auth::guard('admin')->logout();
         return redirect('/');
     }
